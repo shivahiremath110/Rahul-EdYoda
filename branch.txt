@@ -1,0 +1,13 @@
+Branching>> Azure repo
+
+
+
+Branch.          env 
+
+Dev.              dev 
+
+test.              test
+
+preprod.           preprod
+
+main.              prod

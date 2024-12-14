@@ -1,1 +1,29 @@
-##
+pool:
+  name: Azure Pipelines
+  demands: azureps
+
+steps:
+- task: CopyFiles@2
+  displayName: 'checkout terraform code'
+  inputs:
+    SourceFolder: infra/terraform
+    TargetFolder: drop
+
+- task: petergroenewegen.PeterGroenewegen-Xpirit-Vsts-Release-Terraform.Xpirit-Vsts-Release-Terraform.Terraform@2
+  displayName: 'Terraform init'
+  inputs:
+    TemplatePath: infra/terraform/main.tf
+    Arguments: init
+    InstallTerraform: true
+
+- task: petergroenewegen.PeterGroenewegen-Xpirit-Vsts-Release-Terraform.Xpirit-Vsts-Release-Terraform.Terraform@2
+  displayName: 'Terraform plan'
+  inputs:
+    TemplatePath: infra/terraform/main.tf
+    Arguments: plan
+
+- task: petergroenewegen.PeterGroenewegen-Xpirit-Vsts-Release-Terraform.Xpirit-Vsts-Release-Terraform.Terraform@2
+  displayName: 'Terraform apply -auto-approve'
+  inputs:
+    TemplatePath: Infra/terraform/main.tf
+    Arguments: 'apply -auto-approve'

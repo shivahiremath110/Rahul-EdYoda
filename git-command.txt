@@ -1,0 +1,10 @@
+git clone <repo url >.       this is to clone central repo.
+git clone -b <branch-name>   <repo-url>.   this will clone the specific branch.
+git pull <repo-url>.   this is to pull/copy the latest changes.
+git status >> this will check the difference b/w central and local repo.
+git add <file-name>.     this will add the changes of that file.
+git add *.      this will addd every changes
+git commit -m "changingforfeature1".  this will commit your code locally (will generate a commit id)
+git push it will push the changes from local to central repo.
+
+

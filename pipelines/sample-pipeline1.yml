@@ -4,13 +4,13 @@ steps:
 - task: CopyFiles@2
   displayName: 'checkout source code'
   inputs:
-    SourceFolder: application
-    TargetFolder: 'app-code'
+    SourceFolder: infra/terraform
+    TargetFolder: 'terraform-code'
 
 - task: CopyPublishBuildArtifacts@1
   displayName: 'Publish code to artifact'
   inputs:
-    CopyRoot: application
+    CopyRoot: infra/terraform
     Contents: '**'
-    ArtifactName: 'application-code-artifact'
+    ArtifactName: 'terraform-code-artifact'
     ArtifactType: Container

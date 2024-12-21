@@ -1,0 +1,102 @@
+parameters:
+- name: pool
+  displayName: Select Pool Name
+  type: string
+  default: Azure Pipelines
+  values:
+  - private-agent-pool
+  - Default
+  - Azure Pipelines
+- name: env
+  displayName: Select your Environment
+  type: string
+  default: dev
+  values:
+  - dev
+  - test
+  - prod
+- name: agent
+  displayName: Select Agent 
+  type: string
+  default: Hosted Agent
+  values:
+  - private-linux-agent
+  - Hosted Agent
+  - demo-linux-vm
+
+
+trigger: none
+
+# variables:
+# - group: Dev-env-details
+
+
+stages:
+- stage: InfraCI
+  jobs:
+  - job: build
+    displayName: build
+    pool: 
+      name: ${{ parameters.pool }}
+      demands:
+      - agent.name -equals ${{ parameters.agent }}
+
+
+    steps:
+    - task: CopyFiles@2
+      displayName: 'Checkout infra code'
+      inputs:
+        SourceFolder: $(source_path)
+        Contents: '**/**'
+        TargetFolder: '$(build.artifactstagingdirectory)'
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish infra code to Artifact'
+      inputs:
+       pathToPublish: '$(Build.ArtifactStagingDirectory)'
+       artifactName: ${{ parameters.env }}-infra-artifact
+
+- stage: InfraCD
+  jobs:
+  - deployment: Deploy
+  # - job: Deploy
+    displayName: Deploy${{ parameters.env }}
+    pool: 
+      name: ${{ parameters.pool }}
+      demands:
+      - agent.name -equals ${{ parameters.agent }}
+    environment: ${{ parameters.env }} 
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: DownloadBuildArtifacts@0
+            displayName: 'Download from Artifact'
+            inputs:
+             buildType: 'current'
+             downloadType: 'single'
+             #buildVersionToDownload: '224'
+             artifactName: ${{ parameters.env }}-infra-artifact
+             downloadPath: '$(Build.ArtifactStagingDirectory)'
+
+        #   - task: ms-vscs-rm.vss-services-ansible.ansible-task.Ansible@0
+        #     displayName: 'Run Ansible playbook'
+        #     inputs:
+        #      ansibleInterface: agentMachine
+        #      playbookPathOnAgentMachine: '$(Build.ArtifactStagingDirectory)/${{ parameters.env }}-infra-artifact/Playbook.yaml'
+        #      failOnStdErr: false
+        #      inventoriesAgentMachine: 'noInventory'
+        #      #sudoEnabled: true
+        #      #sudoUser: 'qaazadoadmin'
+        #      #connectionOverSsh: 'Ansible VM'
+        #      #playbookRootRemoteMachine: Infrastructure/Playbook
+        #      #playbookPathLinkedArtifactOnRemoteMachine: Playbook.yaml
+        #      #playbookPathOnAgentMachine: Infrastructure/Playbook/Playbook.yaml
+        #      #inventoriesRemoteMachine: hostList
+        #      #inventoryHostListRemoteMachine: 10.85.4.11
+        #      #inventoriesAgentMachine: hostList
+        #      #inventoryHostListAgentMachine: 10.85.4.11
+        #      #args: -e "env=$(env_name)"
+        #      kkk
+        #      #args: -e "env=${{ parameters.env }}"
+             

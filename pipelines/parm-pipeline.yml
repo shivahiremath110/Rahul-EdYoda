@@ -7,6 +7,7 @@ parameters:
   - private-agent
   - Default
   - Azure Pipelines
+  - Demo-pvt-agent
 - name: env
   displayName: Select your Environment
   type: string

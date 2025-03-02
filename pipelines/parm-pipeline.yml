@@ -1,5 +1,5 @@
 parameters:
-- name: pool
+- name: poolname
   displayName: Select Pool Name
   type: string
   default: Azure Pipelines
@@ -40,7 +40,7 @@ stages:
   - job: build
     displayName: build
     pool: 
-      name: ${{ parameters.pool }}
+      name: ${{ parameters.poolname }}
       demands:
       - agent.name -equals ${{ parameters.agent }}
 
@@ -66,7 +66,7 @@ stages:
   # - job: Deploy
     displayName: Deploy${{ parameters.env }}
     pool: 
-      name: ${{ parameters.pool }}
+      name: ${{ parameters.poolname}}
       demands:
       - agent.name -equals ${{ parameters.agent }}
     environment: ${{ parameters.env }} 

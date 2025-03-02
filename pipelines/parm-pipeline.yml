@@ -15,7 +15,7 @@ parameters:
   values:
   - dev
   - test
-  - preprod
+  #- preprod
   - prod
 - name: agent
   displayName: Select Agent 

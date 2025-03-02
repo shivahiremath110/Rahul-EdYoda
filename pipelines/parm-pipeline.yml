@@ -55,11 +55,17 @@ stages:
         TargetFolder: '$(build.artifactstagingdirectory)'
 
     - task: PublishBuildArtifacts@1
-      displayName: 'Publish infra code to Artifact'
+      displayName: 'Publish infra code to dev Artifact'
       inputs:
        pathToPublish: '$(Build.ArtifactStagingDirectory)'
-       artifactName: ${{ parameters.env }}-infra-artifact
+       artifactName: dev-infra-artifact
 
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish infra code to test Artifact'
+      inputs:
+       pathToPublish: '$(Build.ArtifactStagingDirectory)'
+       artifactName: test-infra-artifact
+       
 - stage: InfraCDDEV
   jobs:
   - deployment: DeployDEV

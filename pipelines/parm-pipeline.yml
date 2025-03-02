@@ -49,8 +49,8 @@ stages:
     - task: CopyFiles@2
       displayName: 'Checkout infra code'
       inputs:
-        #SourceFolder: $(source_path)
-        SourceFolder: infra
+        SourceFolder: $(source_path)
+        #SourceFolder: infra
         Contents: '**/**'
         TargetFolder: '$(build.artifactstagingdirectory)'
 

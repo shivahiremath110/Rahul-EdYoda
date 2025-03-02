@@ -81,7 +81,8 @@ stages:
              buildType: 'current'
              downloadType: 'single'
              #buildVersionToDownload: '224'
-             artifactName: ${{ parameters.env }}-infra-artifact
+             #artifactName: ${{ parameters.env }}-infra-artifact
+             artifactName: dev-infra-artifact
              downloadPath: '$(Build.ArtifactStagingDirectory)'
 
 - stage: InfraCDTEST
@@ -105,7 +106,8 @@ stages:
              buildType: 'current'
              downloadType: 'single'
              #buildVersionToDownload: '224'
-             artifactName: ${{ parameters.env }}-infra-artifact
+             #artifactName: ${{ parameters.env }}-infra-artifact
+             artifactName: test-infra-artifact
              downloadPath: '$(Build.ArtifactStagingDirectory)'
 
         #   - task: ms-vscs-rm.vss-services-ansible.ansible-task.Ansible@0

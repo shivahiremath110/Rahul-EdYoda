@@ -8,15 +8,15 @@ parameters:
   - Default
   - Azure Pipelines
   - Demo-pvt-agent
-- name: env
-  displayName: Select your Environment
-  type: string
-  default: dev
-  values:
-  - dev
-  - test
-  #- preprod
-  - prod
+# - name: env
+#   displayName: Select your Environment
+#   type: string
+#   default: dev
+#   values:
+#   - dev
+#   - test
+#   #- preprod
+#   - prod
 - name: agent
   displayName: Select Agent 
   type: string

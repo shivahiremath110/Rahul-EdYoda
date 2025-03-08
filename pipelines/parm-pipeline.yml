@@ -38,7 +38,7 @@ trigger: none
 stages:
 - stage: InfraCI
   jobs:
-  - job: build
+  - job: ci
     displayName: build
     pool: 
       name: ${{ parameters.poolname }}

@@ -47,7 +47,7 @@ Command to add private agent
 
 
 
-1) curl -o vsts-agent-linux-x64-2.206.1.tar.gz -L https://vstsagentpackage.azureedge.net/agent/4.251.0/vsts-agent-linux-x64-4.251.0.tar.gz
+1) curl -o vsts-agent-linux-x64-4.251.0.tar.gz -L https://vstsagentpackage.azureedge.net/agent/4.251.0/vsts-agent-linux-x64-4.251.0.tar.gz
 
 2) mkdir myagent 
 

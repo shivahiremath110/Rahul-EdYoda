@@ -26,6 +26,7 @@ parameters:
   - Hosted Agent
   - demo-linux-pr-agent
   - ajay-vm-1
+  - demoagentbatch2
 
 
 trigger: none

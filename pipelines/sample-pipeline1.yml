@@ -1,5 +1,5 @@
 pool:
-  name: Azure Pipelines
+  name: private-agent
 steps:
 - task: CopyFiles@2
   displayName: 'checkout source code'

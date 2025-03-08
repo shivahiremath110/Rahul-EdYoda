@@ -1,0 +1,94 @@
+Azure Pipeline
+
+     a) Build pipeline (CI pipeline)
+     b) Release pipeline (CD Pipeline) 
+
+=======================================================================
+A) Build pipeline comman tasks 
+        a) Checkout the source code -M
+        b) Build the code (build plugins )-O
+        c) integrate any test script -O
+        d) include code coverage /testing (sonarqube ,sonarcloud ... )-O
+        e) Publish artifact (save the build package in artifact )-M
+
+
+B) Release pipeline common tasks
+         b.1) Download the artifact 
+         b.2) Deploy build artifact to target server /machine 
+
+
+=================================================================================================================
+Prerequisite for Azure Pipeline 
+
+          a) Service connection ->> connection between azure devOps to azure cloud or any other devOps tools 
+                  parameters - Client Id , Client secret , subscription id , subscription name , tenant id 
+          b) repo-connection ->> create connection to connect with your source code repositories 
+          c) Agent ->> need dedicated agent to run the pipeline 
+          d) Need to have required access to run the pipeline in azure devops 
+
+
+Agent : a dedicated server where pipeline run (pysical or virtual server ) 
+
+
+     Agent pool ->> like folder which hold the agents 
+       agent -> a dedicated server where pipeline run (pysical or virtual server ) 
+          1) Microsoft hosted agent - > we don't have any control on this
+          2) private agent - > we have all the control 
+
+how to add private agent :
+
+  a) we need to create dedicated server 
+  b) we need add that server as  agent followed devops steps
+  c) we have to install all the necessary software and library files 
+
+steps to add private agent :
+
+Command to add private agent 
+
+1) curl -o vsts-agent-linux-x64-2.206.1.tar.gz -L https://vstsagentpackage.azureedge.net/agent/2.206.1/vsts-agent-linux-x64-2.206.1.tar.gz
+
+2) mkdir myagent 
+
+3) cd myagent 
+
+4) tar zxvf ~/vsts-agent-linux-x64-2.202.1.tar.gz
+
+
+5) ./config.sh
+
+project url : https://dev.azure.com/rahulk2081994
+
+PAT- 65omh3t7uaawpmf5ytznp55goniyu45u2roiauug2ycqvowi6zxq
+
+agent pool : private-agent
+
+agent name : private-agent 
+
+foldername : myagentprivate 
+
+6) ./run.sh 
+
+===============================================================================================================================
+
+type of azure Pipeline 
+    1) Classic editor pipeline 
+    2) yaml based Pipeline 
+
+
+===================================================================================================================================
+
+how to pass variables in azure pipeline 
+
+      a) pipeline variable 
+      b) vraiable group 
+      c) link keyvault to pipeline 
+
+==============================================================================================================
+  
+Method to run the pipeline 
+
+1) Mannual trigger 
+
+2) Auto trigger (CI )
+
+3) Schedule (run at specific time )              

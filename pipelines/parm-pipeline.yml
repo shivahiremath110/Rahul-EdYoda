@@ -125,9 +125,9 @@ stages:
           - task: PowerShell@2
             displayName: 'run powershell script'
             inputs:
-             targetType = filePath
-             filePath: (Build.ArtifactStagingDirectory)/infra/infra.ps1
-             arguments: "name- ${{ parameters.rgname }} , location- ${{ parameters.rgname }}"
+              targetType = filePath
+              filePath: (Build.ArtifactStagingDirectory)/infra/infra.ps1
+              arguments: "name- ${{ parameters.rgname }} , location- ${{ parameters.rgname }}"
 
 
         #   - task: ms-vscs-rm.vss-services-ansible.ansible-task.Ansible@0

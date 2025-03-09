@@ -1,0 +1,23 @@
+IAAC -  iNFRA as a Code 
+
+
+Automation of infra creation ..
+
+
+AZURE -  Terraform , Ansible , Poweshell , ARM (Azure resource Manage Templates)
+
+AWS. - Terraform , Ansible , Powershell , Cloud formation templates
+
+
+=============
+
+How to run terraform code ..
+
+1) Terraform init >> this will initilise the terraform version 
+
+2) Terraform plan >> This will generate the plan ( it will tell you whta are the resources going to create)
+
+3) Terraform Apply >> This will create the resources 
+
+====
+4) Terraform destroy >> this will delete all the resources created using terraform scripts.

@@ -1,0 +1,104 @@
+parameters:
+- name: pool
+  displayName: SelectAgentpool
+  default: Azure Pipelines
+  values:
+  - Azure Pipelines
+  - private-agent
+  type: string
+- name: images
+  displayName: image
+  type: string
+  default: ubuntu-latest
+  values:
+  - windows-latest
+  - vs2017-win2016
+  - ubuntu-latest
+  - ubuntu-16.04
+  - macOS-latest
+  - macOS-10.14
+  - ubuntu-latest
+  - windows-2019
+- name: env
+  displayName: Environment Name
+  type: string
+  default: dev
+  values:
+  - dev
+  - test
+  - prod
+- name: dependencies
+  displayName: include_dependencies
+  type: string
+  default: false
+  values:
+  - false
+  - true
+
+
+
+
+trigger: none
+
+stages:
+- stage: CI_pipeline 
+  jobs:
+  - job: build
+    displayName: build
+    pool: 
+      vmImage: ${{ parameters.images }}
+      name: ${{ parameters.pool }}
+      #demands:
+      #- agent.name -equals ${{ parameters.agent }}
+
+
+    steps:
+    - task: CopyFiles@2
+      displayName: 'Copy infra scripts'
+      inputs:
+       SourceFolder: Infra
+       Contents: '**/**'
+       TargetFolder: '$(build.artifactstagingdirectory)'
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish to Artifact'
+      inputs:
+       pathToPublish: '$(Build.ArtifactStagingDirectory)'
+       artifactName: ${{ parameters.env }}-demo-artifact
+
+- stage: CD_pipeline
+  jobs:
+  - job: Deploy
+    displayName: Deploy
+    pool: 
+      vmImage: ${{ parameters.images }}
+      name: ${{ parameters.pool }}
+    #   demands:
+    #    - agent.name -equals ${{ parameters.agent }}
+    steps:
+    - task: DownloadBuildArtifacts@0
+      displayName: 'Download from Artifact'
+      inputs:
+       buildType: 'current'
+       downloadType: 'single'
+       #buildVersionToDownload: '224'
+       artifactName: ${{ parameters.env }}-demo-artifact
+       downloadPath: '$(Build.ArtifactStagingDirectory)'
+
+
+    # - script: python -m pip install --upgrade pip setuptools wheel
+    #   displayName: 'Install tools'
+    # - task: PythonScript@0
+    #   displayName: 'Run a Python script'
+    #   inputs:
+    #    versionSpec: '3.6'
+    #    #scriptPath: IICSRestAPI.py 
+    #    scriptPath: test.py
+    #    #arguments: "$(User_Name) $(password) $(file_path) $(PPd_User) $(PPd_password) $(export_id) $(assest_name) ${{ parameters.dependencies }}"
+    #    #arguments: "rahul.kumar@noc.qa Jan@202112"
+    #    # scriptSource: 'inline'
+    #    # script: |
+    #    #$(PoolName)
+
+    #    #THIS TO TEST to test 
+    

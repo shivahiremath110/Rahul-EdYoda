@@ -1,0 +1,16 @@
+pool:
+  name: private-agent
+steps:
+- task: CopyFiles@2
+  displayName: 'checkout source code'
+  inputs:
+    SourceFolder: infra/terraform
+    TargetFolder: 'terraform-code'
+
+- task: CopyPublishBuildArtifacts@1
+  displayName: 'Publish code to artifact'
+  inputs:
+    CopyRoot: infra/terraform
+    Contents: '**'
+    ArtifactName: 'terraform-code-artifact'
+    ArtifactType: Container

@@ -1,0 +1,140 @@
+parameters:
+- name: poolname
+  displayName: Select Pool Name
+  type: string
+  default: Azure Pipelines
+  values:
+  - private-agent
+  - Default
+  - Azure Pipelines
+  - Demo-pvt-agent
+# - name: env
+#   displayName: Select your Environment
+#   type: string
+#   default: dev
+#   values:
+#   - dev
+#   - test
+#   #- preprod
+#   - prod
+- name: agent
+  displayName: Select Agent 
+  type: string
+  default: Hosted Agent
+  values:
+  - private-agent
+  - Hosted Agent
+  - demo-linux-pr-agent
+  - ajay-vm-1
+  - demoagentbatch2
+
+
+trigger: none
+
+# variables:
+# - group: Dev-env-details
+
+
+stages:
+- stage: InfraCI
+  jobs:
+  - job: ci
+    displayName: build
+    pool: 
+      name: ${{ parameters.poolname }}
+      demands:
+      - agent.name -equals ${{ parameters.agent }}
+
+
+    steps:
+    - task: CopyFiles@2
+      displayName: 'Checkout infra code'
+      inputs:
+        SourceFolder: $(source_path)
+        #SourceFolder: infra
+        Contents: '**/**'
+        TargetFolder: '$(build.artifactstagingdirectory)'
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish infra code to dev Artifact'
+      inputs:
+       pathToPublish: '$(Build.ArtifactStagingDirectory)'
+       artifactName: dev-infra-artifact
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish infra code to test Artifact'
+      inputs:
+       pathToPublish: '$(Build.ArtifactStagingDirectory)'
+       artifactName: test-infra-artifact
+       
+- stage: InfraCDDEV
+  jobs:
+  - deployment: DeployDEV
+  # - job: Deploy
+    displayName: DepoyDev
+    #displayName: Deploy${{ parameters.env }}
+    pool: 
+      name: ${{ parameters.poolname}}
+      demands:
+      - agent.name -equals ${{ parameters.agent }}
+    environment: dev
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: DownloadBuildArtifacts@0
+            displayName: 'Download from Artifact'
+            inputs:
+             buildType: 'current'
+             downloadType: 'single'
+             #buildVersionToDownload: '224'
+             #artifactName: ${{ parameters.env }}-infra-artifact
+             artifactName: dev-infra-artifact
+             downloadPath: '$(Build.ArtifactStagingDirectory)'
+
+- stage: InfraCDTEST
+  jobs:
+  - deployment: DeployTest
+  # - job: Deploy
+    #displayName: Deploy${{ parameters.env }}
+    displayName: DeployTest
+    pool: 
+      name: ${{ parameters.poolname}}
+      demands:
+      - agent.name -equals ${{ parameters.agent }}
+    environment: test 
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: DownloadBuildArtifacts@0
+            displayName: 'Download from Artifact'
+            inputs:
+             buildType: 'current'
+             downloadType: 'single'
+             #buildVersionToDownload: '224'
+             #artifactName: ${{ parameters.env }}-infra-artifact
+             artifactName: test-infra-artifact
+             downloadPath: '$(Build.ArtifactStagingDirectory)'
+
+        #   - task: ms-vscs-rm.vss-services-ansible.ansible-task.Ansible@0
+        #     displayName: 'Run Ansible playbook'
+        #     inputs:
+        #      ansibleInterface: agentMachine
+        #      playbookPathOnAgentMachine: '$(Build.ArtifactStagingDirectory)/${{ parameters.env }}-infra-artifact/Playbook.yaml'
+        #      failOnStdErr: false
+        #      inventoriesAgentMachine: 'noInventory'
+        #      #sudoEnabled: true
+        #      #sudoUser: 'qaazadoadmin'
+        #      #connectionOverSsh: 'Ansible VM'
+        #      #playbookRootRemoteMachine: Infrastructure/Playbook
+        #      #playbookPathLinkedArtifactOnRemoteMachine: Playbook.yaml
+        #      #playbookPathOnAgentMachine: Infrastructure/Playbook/Playbook.yaml
+        #      #inventoriesRemoteMachine: hostList
+        #      #inventoryHostListRemoteMachine: 10.85.4.11
+        #      #inventoriesAgentMachine: hostList
+        #      #inventoryHostListAgentMachine: 10.85.4.11
+        #      #args: -e "env=$(env_name)"
+        #      kkk
+        #      #args: -e "env=${{ parameters.env }}"
+             

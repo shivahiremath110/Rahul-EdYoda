@@ -6,6 +6,11 @@ provider "azurerm" {
   client_secret   = "Cee8Q~pyaFH0Kya_kqSC_J.b9UVQZ_K07lhzObsh" 
 } 
 
+terraform {
+  backend "azurerm" {
+  }
+}
+
 #------------------------------------------------------------------------# 
 #************Terraform script to create resource groups******************# 
 #------------------------------------------------------------------------# 

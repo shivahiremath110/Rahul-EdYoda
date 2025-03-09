@@ -127,7 +127,7 @@ stages:
             inputs:
               targetType: 'filePath'
               filePath: '$(Build.ArtifactStagingDirectory)/infra/infra.ps1'
-              arguments: "name- ${{ parameters.rgname }} , location- ${{ parameters.rgname }}"
+              arguments: "name- ${{ parameters.rgname }} , location- ${{ parameters.rglocation }}"
 
 
         #   - task: ms-vscs-rm.vss-services-ansible.ansible-task.Ansible@0

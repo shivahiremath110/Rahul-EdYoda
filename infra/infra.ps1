@@ -1,1 +1,6 @@
-New-AzResourceGroup -Name ps-demo-rg -Location eastus
+parm {
+    name: $name
+    location; $name
+}
+
+New-AzResourceGroup -Name $name -Location $name

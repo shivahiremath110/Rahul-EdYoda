@@ -1,0 +1,1 @@
+New-AzResourceGroup -Name ps-demo-rg -Location eastus

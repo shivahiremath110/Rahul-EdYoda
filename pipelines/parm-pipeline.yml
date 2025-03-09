@@ -27,7 +27,12 @@ parameters:
   - demo-linux-pr-agent
   - ajay-vm-1
   - demoagentbatch2
-
+- name: rgname
+  displayName: Provide resource group name 
+  type: string
+- name: rglocation
+  displayName: Provide resource group location
+  type: string
 
 trigger: none
 
@@ -122,7 +127,7 @@ stages:
             inputs:
              targetType = filePath
              filePath: (Build.ArtifactStagingDirectory)/infra/infra.ps1
-             arguments: "name- demo-ps-rg , location- eastus"
+             arguments: "name- ${{ parameters.rgname }} , location- ${{ parameters.rgname }}"
 
 
         #   - task: ms-vscs-rm.vss-services-ansible.ansible-task.Ansible@0

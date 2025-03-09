@@ -126,7 +126,7 @@ stages:
             displayName: 'run powershell script'
             inputs:
               targetType = filePath
-              filePath: (Build.ArtifactStagingDirectory)/infra/infra.ps1
+              filePath: "(Build.ArtifactStagingDirectory)/infra/infra.ps1"
               arguments: "name- ${{ parameters.rgname }} , location- ${{ parameters.rgname }}"
 
 

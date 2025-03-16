@@ -1,0 +1,25 @@
+
+Application Migration 
+- Migration method (application code / )
+- Hosted services (CPU /autoscaling /)
+- Networking 
+- Aceess 
+- Alert & Monitoring 
+
+
+Data Migration 
+1) Decide the storage 
+2) Migration ( Data Size / Flitering /Operation cost)
+3) BCP/BCM (RTO/RPO- Disaster recovery/ availability / Accesibilty /backup recovery )
+
+
+
+
+
+
+
+
+
+
+
+

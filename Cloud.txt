@@ -43,10 +43,22 @@ Availability zones :  Building of the data centers  (zone1)
 
 ------------------------------
 IAAS - Infra as services >> VM , Keyvaut , storage account , sql 
-PASS-  platform as services >> Web app , Function Apps , Databricks , ADF , Synapse , ACR, Azure bot,
+PASS-  platform as services >> Web app , Function Apps , Databricks , ADF , Synapse , ACR, Azure bot,API , APIM
 SAAS - software as services >> Outlook , Copilot , Azure ai ..
 
 =================
+IAAS - Azure VM (EC2) , Keyvault , Azure sql (Cosmo db , postgre sql ), Storage acccount (s3)
+
+PAAS - web App  , Function App (Lamda) , ADF (Data migration)
+
+Monitoring >> Azure monitor , App insight , Log analytics workspace 
+
+Dash board : Grafana 
+
+Networking : Vnet , NSG , Subnet 
+
+
+
 
 
 

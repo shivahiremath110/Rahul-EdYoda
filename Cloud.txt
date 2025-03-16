@@ -1,16 +1,59 @@
 
-Application Migration 
+Application Migration / New Application 
 - Migration method (application code / )
 - Hosted services (CPU /autoscaling /)
 - Networking 
 - Aceess 
-- Alert & Monitoring 
+- Alert & Monitoring
+- BCP/bcm - Disaster recovery 
 
 
-Data Migration 
+Data Migration / 
 1) Decide the storage 
 2) Migration ( Data Size / Flitering /Operation cost)
 3) BCP/BCM (RTO/RPO- Disaster recovery/ availability / Accesibilty /backup recovery )
+
+
+== Cost optimazation 
+
+
+--------------
+
+Cloud - Hostig your application and data on internet so that can be access anytime from anywhere.
+
+Azure 
+========
+Tenant (organisation)
+
+- Subscriptions ( RG or subscription)
+
+Recommended 
+dev >> Sub1
+test >> sub2
+prod >> sub3
+
+same subscription setup 
+dev >> RG1
+test >> RG2
+Prod >> RG3
+
+Region : Geographical region where data centers are avaialble 
+
+Availability zones :  Building of the data centers  (zone1)
+
+------------------------------
+IAAS - Infra as services >> VM , Keyvaut , storage account , sql 
+PASS-  platform as services >> Web app , Function Apps , Databricks , ADF , Synapse , ACR, Azure bot,
+SAAS - software as services >> Outlook , Copilot , Azure ai ..
+
+=================
+
+
+
+
+
+
+
 
 
 

@@ -99,10 +99,13 @@ to check the image
 
 4) az login (sudo apt install azure-cli  <in case az is not found >)
 
+
+edyodademoacr.azurecr.io
+
 6) connect with ACR
 >>az acr login --name demoacrsep
 
-az acr login --name saiacr13
+az acr login --name edyodademoacr
 
 saiacr13.azurecr.io
 

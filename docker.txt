@@ -1,0 +1,161 @@
+Prerequiste :
+
+1) Linux VM ( ubuntu 20.04 ) - Done
+
+2) Docker need to be installed on that -Done
+
+3) Docker server Status should be in running -Done
+
+4) Make docker file ready 
+
+
+=========================================================================================
+
+
+1) sudo apt update
+
+2) apt list --upgradable
+
+3) sudo apt upgrade
+
+4) apt list --upgradable
+
+5) sudo apt install apt-transport-https ca-certificates curl software-properties-common
+
+6) curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+7) sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+
+8) sudo apt install docker-ce
+
+9)  sudo chmod 666 /var/run/docker.sock
+
+sudo chmod 666 /var/lib/dpkg/lock-frontend 
+
+10) sudo apt install docker.io
+
+11) docker --version 
+
+12)  sudo systemctl status docker 
+
+Output : 
+
+demouser@demo-docker-vm:~$ sudo systemctl status docker
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: active (running) since Tue 2022-03-15 14:45:37 UTC; 32s ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 2804 (dockerd)
+      Tasks: 10
+     Memory: 43.8M
+     CGroup: /system.slice/docker.service
+             └─2804 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+===============================================================================================================
+
+next step is create docker file .
+
+1) mkdir docker 
+
+2) nano dockerfile 
+
+for save control+O  
+
+to close file  c+X
+
+
+================================================================================================================
+
+<Sample dockerfile>
+----------------------------
+
+FROM ubuntu:18.04
+
+RUN apt-get update && \
+    apt-get install -y redis-server && \
+    apt-get clean
+
+EXPOSE 6379
+
+CMD ["redis-server", "--protected-mode no"]
+
+============================================================================================================================
+
+
+Build the docker image using above docker file .
+
+to build the docker image 
+
+
+1) docker build -t demo-docker-image .
+
+to check the image
+
+2) docker images 
+ 
+
+3) >> Login to portal and create ACR 
+
+4) az login (sudo apt install azure-cli  <in case az is not found >)
+
+6) connect with ACR
+>>az acr login --name demoacrsep
+
+az acr login --name saiacr13
+
+saiacr13.azurecr.io
+
+
+7) docker tag demo-docker-image:latest saiacr13.azurecr.io/demo-docker-image:v1.0
+
+docker tag demo-docker-image:latest sundardemoacr.azurecr.io/demo-docker-image:v1.1
+
+Push the Image to ACR
+
+8)>> docker push saiacr13.azurecr.io/demo-docker-image:v1.0
+
+
+
+===========================================================================================
+
+A Dockerfile is a text file that contains all the commands a user could run on the command line to create an image. It includes all the instructions needed by Docker to build the image.
+
+Docker images are made up of a series of filesystem layers representing instructions in the image’s Dockerfile that makes up an executable software application.
+
+===============================================================================================================
+
+Below is the list with a short description of some of the most used Dockerfile instructions:
+
+ARG - This instruction allows you to define variables that can be passed at build-time. You can also set a default value.
+FROM - The base image for building a new image. This instruction must be the first non-comment instruction in the Dockerfile. The only exception from this rule is when you want to use a variable in the FROM argument. In this case, FROM can be preceded by one or more ARG instructions.
+LABEL - Used to add metadata to an image, such as description, version, author ..etc. You can specify more than one LABEL, and each LABEL instruction is a key-value pair.
+RUN - The commands specified in this instruction will be executed during the build process. Each RUN instruction creates a new layer on top of the current image.
+ADD - Used to copy files and directories from the specified source to the specified destination on the docker image. The source can be local files or directories or an URL. If the source is a local tar archive, then it is automatically unpacked into the Docker image.
+COPY - Similar to ADD but the source can be only a local file or directory.
+ENV - This instruction allows you to define an environment variable.
+CMD - Used to specify a command that will be executed when you run a container. You can use only one CMD instruction in your Dockerfile.
+ENTRYPOINT - Similar to CMD, this instruction defines what command will be executed when running a container.
+WORKDIR - This directive sets the current working directory for the RUN, CMD, ENTRYPOINT, COPY, and ADD instructions.
+USER - Set the username or UID to use when running any following RUN, CMD, ENTRYPOINT, COPY, and ADD instructions.
+VOLUME - Enables you to mount a host machine directory to the container.
+EXPOSE - Used to specify the port on which the container listens at runtime.
+
+
+=========================================================================
+
+RUN maven clean install 
+
+CMD ["redis-server", "--protected-mode no"]
+
+
+EXPOSE <port no which you want to open >
+
+EXPOSE 3379
+
+
+ARG <INSTRUCTIONS >
+
+
+ENTRYPOINT DefaultEndpointsProtocol=https;AccountName=demotfstatetestsa;AccountKey=/FjBQKgqxh2oN95Fux6hq8bTMfIhLsHBcdl1zsaA6IEq1pkh/LgVze3QeV/T8m9xkKCCwjaVplLc+AStWEytVQ==;EndpointSuffix=core.windows.net
+

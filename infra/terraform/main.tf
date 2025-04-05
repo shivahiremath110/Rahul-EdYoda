@@ -16,6 +16,7 @@ terraform {
   }
 }
 
+#this is to check CI
 
 #------------------------------------------------------------------------# 
 #************Terraform script to create resource groups******************# 

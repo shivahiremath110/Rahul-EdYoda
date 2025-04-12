@@ -2,9 +2,6 @@ pool:
   name: Azure Pipelines
   demands: azureps
 
-
-  service-connection :  
-
 steps:
 - task: CopyFiles@2
   displayName: 'checkout terraform code'

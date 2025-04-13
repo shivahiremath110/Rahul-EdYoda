@@ -2,12 +2,19 @@ Branching>> Azure repo
 
 
 
-Branch.          env 
+Branch.           env 
 
-Dev.              dev 
+Dev.                dev 
 
 test.              test
 
 preprod.           preprod
 
-main.              prod
+main               prod
+
+
+=====================
+
+Feature >> branch (clone of master branch) >> Do a pull everytime before increamental changes.
+
+featues

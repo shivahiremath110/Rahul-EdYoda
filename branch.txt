@@ -17,4 +17,6 @@ main               prod
 
 Feature >> branch (clone of master branch) >> Do a pull everytime before increamental changes.
 
-featues
+featues. >> Dev 
+
+Dev >> Test

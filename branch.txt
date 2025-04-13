@@ -11,7 +11,7 @@ preprod.           preprod
 main               prod
 
 
-=====================
+===============================================
 
 Feature >> branch (clone of master branch) >> Do a pull everytime before increamental changes.
 
@@ -24,7 +24,7 @@ Test >> preprod
 preprod >> main >> deploy code for prod environment.
 
 
-======
+========================================================
 1. Main branch >> prod environment .
 2. Do git pull everytime before merging your code.
 3. Keep your main branch protected no direct commit should be allowed.

@@ -93,4 +93,20 @@ Method to run the pipeline
 
 2) Auto trigger (CI )
 
-3) Schedule (run at specific time )              
+3) Schedule (run at specific time )    
+
+
+=============
+
+Stages :
+    stage1
+    Steps 
+      Steps 1
+        Tasks 
+          tasks1
+          task2 
+    starge2
+     Steps 
+       Steps 1
+        Tasks
+          tasks1

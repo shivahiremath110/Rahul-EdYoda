@@ -10,5 +10,6 @@ steps:
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Pipeline Artifact'
   inputs:
-    targetPath: infra/terraform
+    #targetPath: infra/terraform
+    targetPath: $(Pipeline.Workspace)
     artifact: 'Sample-yaml-infra-artifact'

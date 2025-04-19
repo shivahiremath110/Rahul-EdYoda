@@ -72,7 +72,7 @@ foldername : demoagentbatch2
 
 ===============================================================================================================================
 
-type of azure Pipeline 
+type of azure Pipeline based on creation: 
     1) Classic editor pipeline 
     2) yaml based Pipeline 
 

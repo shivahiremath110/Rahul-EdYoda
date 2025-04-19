@@ -4,12 +4,13 @@ steps:
 - task: CopyFiles@2
   displayName: 'Copy infra source code'
   inputs:
-    SourceFolder: infra/terraform
+    SourceFolder: $(source-code-path)
     TargetFolder: 'demo-infra-code'
 
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Pipeline Artifact'
   inputs:
     #targetPath: infra/terraform
-    targetPath: $(Pipeline.Workspace)
+    #targetPath: $(Pipeline.Workspace)
+    targetPath: $(source-code-path)
     artifact: 'Sample-yaml-infra-artifact'

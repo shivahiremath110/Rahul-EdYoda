@@ -1,5 +1,6 @@
 pool:
   name: Azure Pipelines
+trigger: none
 steps:
 - task: CopyFiles@2
   displayName: 'Copy infra source code'

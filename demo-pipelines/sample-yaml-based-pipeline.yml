@@ -5,7 +5,7 @@ steps:
 - task: CopyFiles@2
   displayName: 'Copy infra source code'
   inputs:
-    SourceFolder: $(source-code-path)
+    SourceFolder: $(infra-code-path)
     TargetFolder: 'demo-infra-code'
 
 - task: PublishPipelineArtifact@1

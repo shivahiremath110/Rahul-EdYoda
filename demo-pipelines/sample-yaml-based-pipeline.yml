@@ -1,5 +1,5 @@
 pool:
-  name: Azure Pipelines
+  name: Demo-agent
 trigger: none
 steps:
 - task: CopyFiles@2

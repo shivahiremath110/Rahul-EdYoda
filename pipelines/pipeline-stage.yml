@@ -54,9 +54,6 @@ stages:
     pool: 
       vmImage: ${{ parameters.images }}
       name: ${{ parameters.pool }}
-      #demands:
-      #- agent.name -equals ${{ parameters.agent }}
-
 
     steps:
     - task: CopyFiles@2
@@ -67,8 +64,6 @@ stages:
        Contents: '**/**'
        TargetFolder: 'demo-infra-code'
            
-'
-
     - task: PublishBuildArtifacts@1
       displayName: 'Publish to Artifact'
       inputs:

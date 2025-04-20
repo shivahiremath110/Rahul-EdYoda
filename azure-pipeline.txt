@@ -47,26 +47,26 @@ Command to add private agent
 
 
 
-1) curl -o vsts-agent-linux-x64-4.251.0.tar.gz -L https://vstsagentpackage.azureedge.net/agent/4.251.0/vsts-agent-linux-x64-4.251.0.tar.gz
+1) curl -o vsts-agent-linux-x64-4.254.0.tar.gz -L https://vstsagentpackage.azureedge.net/agent/4.254.0/vsts-agent-linux-x64-4.254.0.tar.gz
 
 2) mkdir myagent 
 
 3) cd myagent 
 
-4) tar zxvf ~/vsts-agent-linux-x64-4.251.0.tar.gz
+4) tar zxvf ~/vsts-agent-linux-x64-4.254.0.tar.gz
 
 
 5) ./config.sh
 
 project url : https://dev.azure.com/rahulk2081994
 
-PAT- 65omh3t7uaawpmf5ytznp55goniyu45u2roiauug2ycqvowi6zxq
+PAT- FKKkyiNCGfAb7Cz7rda91C53n3W47i6mRMJnjzf0krhLaaCU2VnwJQQJ99BDACAAAAAAAAAAAAASAZDObLGA
 
-agent pool : private-agent
+agent pool : Demo-agent
 
-agent name : private-agent 
+agent name : Demo-agent-linux
 
-foldername : demoagentbatch2
+foldername : demoagent
 
 6) ./run.sh 
 

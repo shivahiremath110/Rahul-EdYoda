@@ -1,9 +1,10 @@
 parameters:
 - name: pool
   displayName: SelectAgentpool
-  default: Azure Pipelines
+  default: Demo-agent
   values:
   - Azure Pipelines
+  - Demo-agent
   - private-agent
   type: string
 - name: images
@@ -26,6 +27,7 @@ parameters:
   values:
   - dev
   - test
+  - Uat
   - prod
 - name: dependencies
   displayName: include_dependencies
@@ -77,7 +79,7 @@ stages:
     #    - agent.name -equals ${{ parameters.agent }}
     steps:
     - task: DownloadBuildArtifacts@0
-      displayName: 'Download from Artifact'
+      displayName: 'Download build package from  Artifact'
       inputs:
        buildType: 'current'
        downloadType: 'single'

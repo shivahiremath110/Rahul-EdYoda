@@ -68,7 +68,7 @@ stages:
       displayName: 'Publish to Artifact'
       inputs:
        #pathToPublish: '$(Build.ArtifactStagingDirectory)'
-       targetPath: ${{ parameters.codepath }}
+       targetPath: demo-infra-code
        artifactName: ${{ parameters.env }}-demo-artifact
 
 - stage: CD_pipeline

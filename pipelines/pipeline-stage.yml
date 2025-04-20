@@ -72,7 +72,8 @@ stages:
 
 - stage: CD_pipeline
   jobs:
-  - job: Deploy
+  - deployment: deploy
+  #- job: Deploy
     displayName: Deploy
     pool: 
       vmImage: ${{ parameters.images }}

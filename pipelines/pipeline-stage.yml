@@ -62,13 +62,12 @@ stages:
        #SourceFolder: Infra
        SourceFolder: ${{ parameters.codepath }}
        Contents: '**/**'
-       TargetFolder: 'demo-infra-code'
+       TargetFolder: '$(build.artifactstagingdirectory)'
            
     - task: PublishBuildArtifacts@1
-      displayName: 'Publish to Artifact'
+      displayName: 'Publish infra code to Artifact'
       inputs:
-       #pathToPublish: '$(Build.ArtifactStagingDirectory)'
-       targetPath: demo-infra-code
+       pathToPublish: '$(Build.ArtifactStagingDirectory)'
        artifactName: ${{ parameters.env }}-demo-artifact
 
 - stage: CD_pipeline

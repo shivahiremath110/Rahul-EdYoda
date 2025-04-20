@@ -36,6 +36,10 @@ parameters:
   values:
   - false
   - true
+- name: codepath
+  displayName: Provide source code path
+  type: string
+  default: ' '
 
 
 
@@ -58,9 +62,12 @@ stages:
     - task: CopyFiles@2
       displayName: 'Copy infra scripts'
       inputs:
-       SourceFolder: Infra
+       #SourceFolder: Infra
+       SourceFolder: ${{ parameters.codepath }}
        Contents: '**/**'
-       TargetFolder: '$(build.artifactstagingdirectory)'
+       TargetFolder: 'demo-infra-code'
+           
+'
 
     - task: PublishBuildArtifacts@1
       displayName: 'Publish to Artifact'

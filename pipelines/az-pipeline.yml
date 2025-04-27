@@ -4,19 +4,8 @@ parameters:
   type: string
   default: Azure Pipelines
   values:
-  - private-agent
   - Default
   - Azure Pipelines
-  - Demo-pvt-agent
-# - name: env
-#   displayName: Select your Environment
-#   type: string
-#   default: dev
-#   values:
-#   - dev
-#   - test
-#   #- preprod
-#   - prod
 - name: agent
   displayName: Select Agent 
   type: string
@@ -25,19 +14,14 @@ parameters:
   - private-agent
   - Hosted Agent
   - demo-linux-pr-agent
-  - ajay-vm-1
-  - demoagentbatch2
-- name: rgname
-  displayName: Provide resource group name 
-  type: string
-- name: location
-  displayName: Provide resource group location
-  type: string
+# - name: rgname
+#   displayName: Provide resource group name 
+#   type: string
+# - name: location
+#   displayName: Provide resource group location
+#   type: string
 
 trigger: none
-
-# variables:
-# - group: Dev-env-details
 
 
 stages:

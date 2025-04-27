@@ -40,7 +40,7 @@ stages:
       displayName: 'Run Az command'
       inputs:
         azureSubscription:
-        scriptType: ps
+        scriptType: pscore
         scriptLocation: inlineScript
         inlineScript: |
           echo "Deattaching data disk"

@@ -15,6 +15,10 @@ terraform {
   }
 }
 
+az disk create -g azurerm_resource_group -n DemoDisk2 --size-gb 10 --location eastus --sku Standard_LRS
+
+az vm disk attach -g terraform-demo-rg --vm-name demo-tf-auto-vm --name DemoDisk2
+
 #this is to check CI
 
 #------------------------------------------------------------------------# 

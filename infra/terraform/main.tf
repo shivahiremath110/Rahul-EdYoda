@@ -26,7 +26,7 @@ terraform {
  resource "azurerm_resource_group" "rg" { 
 
         name           = "terraform-demo-rg"
-        location       = "eastus"
+        location       = "eastus2"
 } 
 
 

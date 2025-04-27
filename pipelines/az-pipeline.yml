@@ -32,9 +32,9 @@ stages:
   - job: ci
     displayName: infra-creation
     pool: 
+      vmImage: ${{ parameters.images }}
       name: ${{ parameters.poolname }}
-      demands:
-      - agent.name -equals ${{ parameters.agent }}
+
     steps:
     - task: AzureCLI@2
       displayName: 'Run Az command'

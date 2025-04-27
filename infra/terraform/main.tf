@@ -61,6 +61,8 @@ resource "azurerm_network_interface" "main" {
   }
 }
 
+
+
 resource "azurerm_virtual_machine" "vm" {
   name                  = "demo-tf-auto-vm"
   location              = azurerm_resource_group.rg.location

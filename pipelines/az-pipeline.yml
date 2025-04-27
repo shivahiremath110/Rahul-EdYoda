@@ -14,12 +14,14 @@ parameters:
   - private-agent
   - Hosted Agent
   - demo-linux-pr-agent
-# - name: rgname
-#   displayName: Provide resource group name 
-#   type: string
-# - name: location
-#   displayName: Provide resource group location
-#   type: string
+- name: images
+  displayName: image
+  type: string
+  default: ubuntu-latest
+  values:
+  - windows-latest
+  - vs2017-win2016
+  - ubuntu-latest
 
 trigger: none
 

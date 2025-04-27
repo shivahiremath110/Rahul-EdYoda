@@ -59,4 +59,8 @@ stages:
         scriptType: 'batch'
         scriptLocation: 'inlineScript'
         inlineScript: |
+            echo "Deattaching data disk"
+            az vm disk detach -g terraform-demo-rg --vm-name demo-tf-auto-vm --name DemoDisk2
+            echo "Deleting data disk"
+            az disk delete -g azurerm_resource_group -n DemoDisk2 --size-gb 10 --location eastus --sku Standard_LRS
             

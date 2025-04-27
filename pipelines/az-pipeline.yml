@@ -41,10 +41,10 @@ trigger: none
 
 
 stages:
-- stage: InfraCI
+- stage: Infradeployment
   jobs:
   - job: ci
-    displayName: build
+    displayName: infra-creation
     pool: 
       name: ${{ parameters.poolname }}
       demands:
@@ -52,10 +52,11 @@ stages:
 
 
     steps:
-    - task: CopyFiles@2
-      displayName: 'Checkout infra code'
+    - task: AzureCLI@2
+      displayName: 'Run Az command'
       inputs:
-        SourceFolder: $(source_path)
-        #SourceFolder: infra
-        Contents: '**/**'
-        TargetFolder: '$(build.artifactstagingdirectory)'
+        azureSubscription:
+        scriptType: 'batch'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+            

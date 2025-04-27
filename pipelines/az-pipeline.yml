@@ -33,8 +33,6 @@ stages:
       name: ${{ parameters.poolname }}
       demands:
       - agent.name -equals ${{ parameters.agent }}
-
-
     steps:
     - task: AzureCLI@2
       displayName: 'Run Az command'

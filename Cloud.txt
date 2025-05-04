@@ -8,6 +8,15 @@ Application Migration / New Application
 - BCP/bcm - Disaster recovery 
 
 
+Storage account -primary (NEU).   Storage account -seconday (WEU)
+
+saneu                                 saweu
+
+====
+read-write (primay).  failover-sa-primary
+read only (sec)       failover-sa-secondary
+
+
 Data Migration / 
 1) Decide the storage 
 2) Migration ( Data Size / Flitering /Operation cost)

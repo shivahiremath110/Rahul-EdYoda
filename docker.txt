@@ -1,6 +1,6 @@
 Prerequiste :
 
-1) Linux VM ( ubuntu 20.04 ) - Done
+1) Linux VM ( ubuntu 24.04 ) - Done
 
 2) Docker need to be installed on that -Done
 

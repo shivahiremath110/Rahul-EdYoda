@@ -55,6 +55,14 @@ TriggeredBy: ● docker.socket
              └─2804 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
 
 ===============================================================================================================
+install Azure cli
+
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
+az --version 
+
+==============================================================================================
+
 
 next step is create docker file .
 

@@ -115,18 +115,18 @@ edyodademoacr.azurecr.io
 6) connect with ACR
 >>az acr login --name demoacrsep
 
-az acr login --name edyodademoacr
+az acr login --name eydemoacr
 
 saiacr13.azurecr.io
 
 
-7) docker tag demo-docker-image:latest saiacr13.azurecr.io/demo-docker-image:v1.0
+7) docker tag demo-docker-image:latest eydemoacr.azurecr.io/demo-docker-image:v1.0
 
 docker tag demo-docker-image:latest sundardemoacr.azurecr.io/demo-docker-image:v1.1
 
 Push the Image to ACR
 
-8)>> docker push saiacr13.azurecr.io/demo-docker-image:v1.0
+8)>> docker push seydemoacr.azurecr.io/demo-docker-image:v1.0
 
 
 

@@ -126,7 +126,7 @@ docker tag demo-docker-image:latest sundardemoacr.azurecr.io/demo-docker-image:v
 
 Push the Image to ACR
 
-8)>> docker push seydemoacr.azurecr.io/demo-docker-image:v1.0
+8)>> docker push eydemoacr.azurecr.io/demo-docker-image:v1.0
 
 
 

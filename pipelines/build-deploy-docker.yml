@@ -1,45 +1,43 @@
 trigger:
 - main
 
-resources:
-- repo: self
+pool:
+  vmImage: ubuntu-latest
 
-variables: 
-  ## Add this under variables section in the pipeline
-  azureSubscription: <Name of the Azure subscription>
-  appName: <Name of the Web App>
-  containerRegistry: <Name of the Azure container registry>
-  dockerRegistryServiceConnection: '4fa4efbc-59af-4c0b-8637-1d5bf7f268fc'
-  imageRepository: <Name of image repository>
-  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
-  tag: '$(Build.BuildId)'
-
-  vmImageName: 'ubuntu-latest'
+variables:
+  imageName: 'your-image-name'
+  azureSubscription: 'your-azure-subscription-name'
+  webAppName: 'your-web-app-name'
+  containerRegistry: 'your-container-registry-name.azurecr.io'
 
 stages:
 - stage: Build
-  displayName: Build and push stage
+  displayName: Build and Push Image
   jobs:
-  - job: Build
-    displayName: Build
-    pool:
-      vmImage: $(vmImageName)
+  - job: BuildAndPush
+    displayName: Build and push Docker image
     steps:
     - task: Docker@2
-      displayName: Build and push an image to container registry
+      displayName: Build and push Docker image
       inputs:
+        containerRegistry: $(containerRegistry)
+        repository: $(imageName)
         command: buildAndPush
-        repository: $(imageRepository)
-        dockerfile: $(dockerfilePath)
-        containerRegistry: $(dockerRegistryServiceConnection)
+        dockerfile: Dockerfile
         tags: |
-          $(tag)
+          latest
+          $(Build.BuildId)
 
-
-    ## Add the below snippet at the end of your pipeline
+- stage: Deploy
+  displayName: Deploy to Web App
+  dependsOn: Build
+  jobs:
+  - job: DeployWebApp
+    displayName: Deploy to Azure Web App
+    steps:
     - task: AzureWebAppContainer@1
-      displayName: 'Azure Web App on Container Deploy'
+      displayName: 'Azure App Service Deploy'
       inputs:
         azureSubscription: $(azureSubscription)
-        appName: $(appName)
-        containers: $(containerRegistry)/$(imageRepository):$(tag)
+        appName: $(webAppName)
+        imageName: '$(containerRegistry)/$(imageName):$(Build.BuildId)'

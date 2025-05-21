@@ -1,7 +1,14 @@
+What is pipeline 
+
+
+
+
 Azure Pipeline
 
      a) Build pipeline (CI pipeline)
      b) Release pipeline (CD Pipeline) 
+
+     Building of code mean 
 
 =======================================================================
 A) Build pipeline comman tasks 

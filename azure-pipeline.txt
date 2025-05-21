@@ -1,6 +1,26 @@
 What is pipeline 
 
 
+DevOps = Dev + operation 
+
+CI - Building + testing + code review 
+CD - Automated release 
+
+Monitorng - 
+
+DevOps life cycle 
+
+plan >> code >> build & test >> deploy >> release >> monitor (ffedbacks) >>
+
+
+
+
+
+
+
+
+
+
 
 
 Azure Pipeline

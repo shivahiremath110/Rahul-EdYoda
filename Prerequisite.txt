@@ -1,0 +1,5 @@
+1. ADO account 
+2. Portal Account with active subscription.
+3. One linux VM (ubuntu 20.04)
+4. Gitlab account
+5. Github account 

@@ -3,8 +3,10 @@ Azure Pipeline
 
      a) Build pipeline (CI pipeline)
      b) Release pipeline (CD Pipeline) 
+     c) Infra pipelines {IAAC}
+     4) Genral custom pipeline /project speciic 
 
-     Building of code mean 
+ 
 
 =======================================================================
 A) Build pipeline comman tasks 
